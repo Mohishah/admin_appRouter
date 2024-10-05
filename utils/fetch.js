@@ -49,5 +49,35 @@ const postFetchUnauth = async (url, body) => {
     return await res.json();
 }
 
+const deleteFetch = async (url) => {
+    const token = cookies().get('token');
+    const res = await fetch(`${process.env.API_URL}${url}`, {
+        cache: 'no-store',
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token.value}`
+        }
+    });
 
-export { getFetch, postFetch, postFetchUnauth }
+    return await res.json();
+}
+
+const putFetch = async (url, body) => {
+    const token = cookies().get('token');
+    const res = await fetch(`${process.env.API_URL}${url}`, {
+        cache: 'no-store',
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token.value}`
+        },
+        body: JSON.stringify(body)
+    });
+
+    return await res.json();
+}
+
+export { getFetch, postFetch, postFetchUnauth, deleteFetch , putFetch }
