@@ -1,6 +1,9 @@
+import Chart from "@/components/Chart";
+import { getFetch } from "@/utils/fetch";
 
+export default async function Home() {
+  const dataChart = await getFetch("/transactions/chart");
 
-export default function Home() {
   return (
     <>
       <div
@@ -8,7 +11,7 @@ export default function Home() {
         <h4 className="fw-bold">داشبورد</h4>
       </div>
 
-      <div id="chartdiv"></div>
-    </>  
-    );
+      <Chart dataChart={dataChart} />
+    </>
+  );
 }
