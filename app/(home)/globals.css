@@ -137,3 +137,12 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.rmdp-container {
+  width: 100%;
+}
+
+.Toastify__toast-body {
+  font-family: "Vazir", sans-serif !important;
+  direction: rtl;
+}
