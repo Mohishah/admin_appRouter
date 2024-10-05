@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
 import { Suspense } from "react";
+import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl">
       <body>
       <Suspense>
+      <AuthProvider>
       <NextNprogress>
         <Header />
 
@@ -31,6 +33,7 @@ export default function RootLayout({ children }) {
         <Toastify />
         <BootstrapClient/>
       </NextNprogress>
+      </AuthProvider>
       </Suspense>
       </body>
     </html>

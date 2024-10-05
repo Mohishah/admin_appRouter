@@ -2,15 +2,21 @@
 
 import { login } from '@/actions/auth';
 import SubmitButton from '@/components/SubmitButton';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useFormState } from 'react-dom';
 import { toast } from 'react-toastify';
 
 export default function LoginPage() {
     const [state, formAction] = useFormState(login, {});
+    const router = useRouter();
 
     useEffect(() => {
-        toast(state?.message, { type: `${state?.status}` })
+        toast(state?.message, { type: `${state?.status}` });
+
+        if (state?.status === 'success') {
+            router.push("/")
+        }
     }, [state])
 
     return (
